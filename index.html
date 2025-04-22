@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor</title>
+    <link rel="stylesheet" href="./style.CSS">
+</head>
+
+<body>
+    <div class="container-img">
+        <img class="logo-img" src="./assets/logo.png" alt="logo">
+    </div>
+    <div class="container">
+
+        <p class="convert1">Converter de</p>
+        <select id="moeda1" class="moeda1">
+            <option value="real">R$ Real Brasileiro</option>
+        </select>
+        <p class="convert1">Converter Para</p>
+        <select id="moeda2" class="moeda1">
+            <option value="dolar">Dólar</option>
+            <option value="euro">Euro</option>
+            <option value="bitcoin">Bitcoin</option>
+            </select>
+            <p class="convert1">Valor</p>
+            <input class="moeda2" type="number" id="valor" class="valor" placeholder="R$ 0,00" required>
+
+            <button onclick="convert ()">Converter</button>
+
+            <div class="container-conversao">
+                <img class="bandeira1" src="./assets/brasil 1.png" alt="logo brasil">
+                <p class="convert3">Real</p>
+                <h2 class="valueToConvert">R$ 0,00</h2>
+                <img class="seta" src="./assets/arrow.png" alt="arrow">
+                <img class="bandeira2" src="./assets/dolar.png" alt="logo estados unidos">
+                <p id="moeda22" class="convert3">Dólar Americano</p>
+                <h2 class="valueConverted">$ 0,00</h2>
+            </div>
+
+
+    </div>
+</body>
+<script src="./script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</html>
