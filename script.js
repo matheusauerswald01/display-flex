@@ -1,12 +1,17 @@
 const convertButton = document.querySelector('button');
 
 
-function convert (){
+const convert = async () => {
     const inputValue = document.querySelector('.moeda2').value;
     
-    const dolarToday = 5.25;
-    const euroToday = 6.65;
-    const bitcoinToday = 500000; 
+    
+
+    const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL").then( response => response.json())
+
+    const dolarToday = data.USDBRL.high
+    const euroToday = data.EURBRL.high
+    const bitcoinToday = data.BTCBRL.high
+
     const convertValue = (inputValue / dolarToday).toFixed(2);
 
     const result = document.querySelector('.valueConverted');
@@ -79,6 +84,31 @@ function updateFlag() {
         flagImage.src = './assets/brasil.png'; 
     }
 }
+const updateDollarRate = async () => {
+    const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL")
+        .then(response => response.json());
 
-// Chame a função sempre que a moeda for alterada
+    
+    const dolarToday = data.USDBRL.high;
+    const euroToday = data.EURBRL.high;
+    const bitcoinToday = data.BTCBRL.high;
+
+    
+    const doleta = document.querySelector('.doleta');
+    const bitcoip = document.querySelector('.btc');
+    const eurooo = document.querySelector('.euroo');
+
+    
+    doleta.innerHTML = `US$ ${parseFloat(dolarToday).toFixed(2)}`;
+    bitcoip.innerHTML = `BTC ${parseFloat(bitcoinToday).toFixed(2)}`;
+    eurooo.innerHTML = `€ ${parseFloat(euroToday).toFixed(2)}`;
+};
+
+
+updateDollarRate();
+
+
+
+
 selectfound.addEventListener('change', updateFlag);
+convertButton.addEventListener('click', convert);
