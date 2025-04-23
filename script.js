@@ -6,6 +6,7 @@ function convert (){
     
     const dolarToday = 5.25;
     const euroToday = 6.65;
+    const bitcoinToday = 500000; 
     const convertValue = (inputValue / dolarToday).toFixed(2);
 
     const result = document.querySelector('.valueConverted');
@@ -35,6 +36,12 @@ function convert (){
     }else{
     }
 
+    if(selectfound.value === 'bitcoin'){
+        const convertValue = (inputValue / bitcoinToday).toFixed(8);
+        result.innerHTML = `BTC ${convertValue} `;
+        return
+    }
+
     if(inputValue === '') {
         alert('Preencha o campo de valor!');
         return;
@@ -55,14 +62,21 @@ const placeholder = document.querySelector('.valueConverted');
 
 
 function updateFlag() {
-    if (selectfound.value === 'euro') {
-        flagImage.src = './assets/euro.png';
-         selectfound2.innerHTML = 'Euro';
-         placeholder.innerHTML = formatterEUR.format(convertValue);
+    
+    if (selectfound.value === 'bitcoin') {
+        flagImage.src = './assets/bitcoin 1.png'; 
+        selectfound2.innerHTML = 'Bitcoin';
+        placeholder.innerHTML = 'BTC 0,00000000';
     } else if (selectfound.value === 'dolar') {
-        flagImage.src = './assets/dolar.png'; // Caminho da bandeira do Dólar
-    } else {
-        flagImage.src = './assets/brasil.png'; // Caminho da bandeira do Real
+        placeholder.innerHTML = 'US$ 0,00';
+        selectfound2.innerHTML = 'Dólar Americano';
+        flagImage.src = './assets/dolar.png'; 
+    }else if (selectfound.value === 'euro') {
+        flagImage.src = './assets/euro.png'; 
+        selectfound2.innerHTML = 'Euro';
+        placeholder.innerHTML = '€ 0,00';
+    }else {
+        flagImage.src = './assets/brasil.png'; 
     }
 }
 
